@@ -673,19 +673,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "chain-spec-builder"
-version = "2.0.0"
-dependencies = [
- "ansi_term 0.12.1",
- "node-cli",
- "rand 0.7.3",
- "sc-chain-spec",
- "sc-keystore",
- "sp-core",
- "structopt",
-]
-
-[[package]]
 name = "chrono"
 version = "0.4.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -8505,19 +8492,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "subkey"
-version = "2.0.0"
-dependencies = [
- "frame-system",
- "node-primitives",
- "node-runtime",
- "sc-cli",
- "sp-core",
- "structopt",
- "substrate-frame-cli",
 ]
 
 [[package]]

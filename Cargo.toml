@@ -9,8 +9,6 @@ members = [
 	"bin/node/rpc",
 	"bin/node/runtime",
 	"bin/node/testing",
-	"bin/utils/subkey",
-	"bin/utils/chain-spec-builder",
 	"client/api",
 	"client/authority-discovery",
 	"client/basic-authorship",
