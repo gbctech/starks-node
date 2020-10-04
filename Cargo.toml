@@ -1,5 +1,6 @@
 [workspace]
 members = [
+	"frame/distaff-vm",
 	"bin/node/bench",
 	"bin/node/browser-testing",
 	"bin/node/cli",
