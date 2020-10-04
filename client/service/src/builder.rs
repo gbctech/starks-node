@@ -693,7 +693,7 @@ fn gen_handler<TBl, TBackend, TExPool, TRpc, TCl>(
 			sp_session::SessionKeys<TBl> +
 			sp_api::Metadata<TBl, Error = sp_blockchain::Error>,
 {
-	use sc_rpc::{chain, state, author, system, offchain};
+	use sc_rpc::{chain, state, author, system, offchain, distaff_vm};
 
 	let system_info = sc_rpc::system::SystemInfo {
 		chain_name: config.chain_spec.name().into(),
@@ -739,6 +739,9 @@ fn gen_handler<TBl, TBackend, TExPool, TRpc, TCl>(
 	);
 	let system = system::System::new(system_info, system_rpc_tx, deny_unsafe);
 
+	///add distaff client
+	let distaff = distaff_vm::DistaffVM::new();
+
 	let maybe_offchain_rpc = offchain_storage.map(|storage| {
 		let offchain = sc_rpc::offchain::Offchain::new(storage, deny_unsafe);
 		offchain::OffchainApi::to_delegate(offchain)
@@ -752,6 +755,7 @@ fn gen_handler<TBl, TBackend, TExPool, TRpc, TCl>(
 			maybe_offchain_rpc,
 			author::AuthorApi::to_delegate(author),
 			system::SystemApi::to_delegate(system),
+			distaff_vm::DistaffVMApi::to_delegate(distaff),
 			rpc_extensions_builder.build(deny_unsafe, task_executor),
 		),
 		rpc_middleware
