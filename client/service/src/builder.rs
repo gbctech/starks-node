@@ -739,7 +739,7 @@ fn gen_handler<TBl, TBackend, TExPool, TRpc, TCl>(
 	);
 	let system = system::System::new(system_info, system_rpc_tx, deny_unsafe);
 
-	///add distaff client
+	// Distaff VM
 	let distaff = distaff_vm::DistaffVM::new();
 
 	let maybe_offchain_rpc = offchain_storage.map(|storage| {

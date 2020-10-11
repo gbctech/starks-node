@@ -30,6 +30,7 @@ pub struct DistaffVM {
 }
 
 impl DistaffVM {
+	/// Create new instance of Distaff VM API.
 	pub fn new() -> Self{
 		DistaffVM{
 
