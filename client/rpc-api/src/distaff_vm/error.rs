@@ -13,6 +13,8 @@
 // You should have received a copy of the Apache License 2.0
 // along with this program. If not, see <https://www.apache.org/licenses/LICENSE-2.0>.
 
+//! Distaff VM RPC errors.
+
  use jsonrpc_core as rpc;
 
  /// Distaff RPC Result type.
@@ -29,6 +31,7 @@
    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
      match self {
        Self::UnsafeRpcCalled(err) => Some(err),
+       #[allow(unreachable_patterns)]
        _ => None,
      }
    }

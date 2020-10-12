@@ -13,6 +13,8 @@
 // You should have received a copy of the Apache License 2.0
 // along with this program. If not, see <https://www.apache.org/licenses/LICENSE-2.0>.
 
+//! Substrate Distaff VM RPC API.
+
  pub mod error;
  use jsonrpc_derive::rpc;
  use self::error::Result as DistaffVMResult;
