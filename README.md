@@ -12,14 +12,14 @@ The Starks Node is built upon the the [Substrate](https://github.com/paritytech/
 
 Pull the Starks Node and UI docker images.
 
-```bash
+```
 $ docker pull starksnetwork/starks-node:0.0.3
 $ docker pull starksnetwork/starks-ui:ms-1
 ```
 
 Start the node container to setup a local test network. Start the ui container to interact with the node. 
 
-```bash
+```
 $ docker run -d --name starks-ui -p 3000:80 starksnetwork/starks-ui:ms-1
 $ docker run --name starks-node -p 9944:9944 starksnetwork/starks-node:0.0.3 --dev --rpc-external --ws-external
 ```
@@ -34,7 +34,7 @@ There are two ways to get example proof data for verification purpose. One is to
 
 If you want to generate STARK proof data by yourself, you can clone the [Distaff VM repo](https://github.com/gbctech/distaff), compile it and run some example cases to get the proof data, like so:
 
-```bash
+```
 $ git clone https://github.com/gbctech/distaff
 $ cd distaff
 $ cargo build --release
@@ -45,7 +45,7 @@ You should be able to find four text files (begin with s_) in the distaff projec
 
 ## Build and Run the Local Docker Image 
 
-```bash
+```
 $ git clone https://github.com/gbctech/starks-node.git
 $ cd starks-node
 $ docker build -t local/starks-node .
@@ -57,7 +57,7 @@ $ docker run --name starks-node -p 9944:9944 local/starks-node --dev --rpc-exter
 
 Build the Starks Node locally. 
 
-```bash
+```
 // in project directory
 $ cargo build --release
 // run the Starks Node binary in dev mode
@@ -68,7 +68,7 @@ $ target/release/starks-node --dev
 
 Test of the Distaff VM can be carried out like so.
 
-```bash
+```
 // in project directory
 $ cargo test -p distaff
 ```
