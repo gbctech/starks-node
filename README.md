@@ -1,4 +1,4 @@
-![Web3](docs/media/web3 foundation_grants_badge_black.png)
+![Web3](docs/media/web3_grant_badge.png)
 
 # Starks Network
 
