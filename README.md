@@ -1,4 +1,4 @@
-![Web3](https://ipfs.io/ipfs/QmYxpgfvbLB5mk6fB5CtfZkex3oJfVs1b6MNJMYnbu9Mdb)
+![Web3](docs/media/web3 foundation_grants_badge_black.png)
 
 # Starks Network
 
@@ -28,7 +28,7 @@ Open browser, enter url: `127.0.0.1:3000` to access the web app. On the top-left
 
 Navigate in the menu: Developer -> RPC calls, call the selected endpoint `distaffvm` and use the `verify` function as shown below. 
 
-![test-ui](https://ipfs.io/ipfs/QmSsxSvyCTmheY3TvU84YW9DuyBgBKicrwesr4ymB511yF)
+![test-ui](docs/media/ui_test_interface.jpg)
 
 There are two ways to get example proof data for verification purpose. One is to download some pre-generated [proof data](https://ipfs.io/ipfs/QmbuemBkvXpN1e1goFx5kEtA8RJS2fjyAeqCboNG8vrDfU) from IPFS, unzip and upload the files as specified in each of the four RPC fields. Then click **Submit RPC call**. You should observe "verification passed" as the output. This means the proof data, along with other data, have been sent to the Distaff VM in the substrate chain and a verification operation has been successfully performed. 
 
@@ -77,7 +77,7 @@ $ cargo test -p distaff
 
 A high level [architecture of the Distaff VM](https://ethresear.ch/t/a-sketch-for-a-stark-based-vm/7048) is shown as the following.
 
-<img src="https://ipfs.io/ipfs/QmU2wmw6nVGXjQhANtMymd6KSnkubmNPNAe2qxzY1aHZVf" alt="distaff_overview" style="zoom:150%;" />
+<img src="docs/media/distaff_vm_arch.png" alt="distaff_overview" style="zoom:150%;" />
 
 The Distaff VM provides a set of assembly language which can be used to construct a general purpose computation into a *program* which can be interpreted by the virtual machine. The basic work flow of the VM is:
 
@@ -95,7 +95,7 @@ One way to automate this process is to set up a smart contract on the blockchain
 
 The overall system architecture and the basic work flow of STARK proof generation and verification on the Starks Network is shown as following.
 
-<img src="https://ipfs.io/ipfs/QmSDsZZngwipBuKkkXqqfjt8NQPXSpv4BvqqScrJ2gejzB" alt="system_disgram" style="zoom:60%;" />
+<img src="docs/media/starks_system_diagram.jpg" alt="system_diagram" style="zoom:60%;" />
 
 a. A verifier will set up an on-chain smart contract with a target Distaff VM program embedded.
 
