@@ -18,7 +18,7 @@
 use self::error::Result;
 
 use sp_core::{Bytes};
-use distaff::{ self };
+use primitives_stark::{ self };
 
 pub use sc_rpc_api::distaff_vm::*;
 pub use self::gen_client::Client as DistaffVMClient;
@@ -67,7 +67,7 @@ impl DistaffVMApi for DistaffVM {
 		let t_public_input:Vec<u128> = d_public_input;
 		let t_outputs:Vec<u128> = d_outputs;
 
-		match distaff::verify(&d_program_hash, &t_public_input, &t_outputs, &d_proof) {
+		match primitives_stark::verify(&d_program_hash, &t_public_input, &t_outputs, &d_proof) {
 			Ok(_) => return Ok("verification passed".to_string().clone()),
 			Err(_msg) => Ok("verification failed".to_string().clone())
 		}
