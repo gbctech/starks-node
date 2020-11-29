@@ -67,6 +67,8 @@ mod batch_verifier;
 
 #[cfg(feature = "std")]
 use batch_verifier::BatchVerifier;
+#[cfg(feature = "std")]
+use primitives_stark::{self, StarkProof};
 
 /// Error verifying ECDSA signature
 #[derive(Encode, Decode)]
@@ -764,6 +766,22 @@ pub trait OffchainIndex {
 sp_externalities::decl_extension! {
 	/// The keystore extension to register/retrieve from the externalities.
 	pub struct VerificationExt(BatchVerifier);
+}
+
+#[runtime_interface]
+pub trait Stark {
+	fn st_verify(
+		program_hash: &[u8; 32],
+		public_inputs: &[u128],
+		outputs: &[u128],
+		proof: &[u8]
+	) {
+		let stark_proof = bincode::deserialize::<StarkProof>(&proof).unwrap();
+		match primitives_stark::verify(program_hash, public_inputs, outputs, &stark_proof) {
+			Ok(r) => Some(r),
+			Err(_) => None
+		};
+	}
 }
 
 /// Interface that provides functions to access the offchain functionality.

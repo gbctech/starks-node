@@ -1167,15 +1167,14 @@ checksum = "fc4b29f4b9bb94bf267d57269fd0706d343a160937108e9619fe380645428abb"
 [[package]]
 name = "distaff"
 version = "0.5.1"
+source = "git+https://github.com/GuildOfWeavers/distaff.git#fad92ce592921e671e72f93cd0078e867350860d"
 dependencies = [
  "bincode",
  "blake3",
- "criterion",
  "crossbeam-utils",
  "env_logger",
  "hex",
  "log",
- "num-bigint 0.3.0",
  "rand 0.7.3",
  "serde",
  "sha3",
@@ -1563,6 +1562,20 @@ dependencies = [
  "sp-runtime",
  "sp-state-machine",
  "structopt",
+]
+
+[[package]]
+name = "frame-distaff-vm"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "hex",
+ "parity-scale-codec",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -5447,6 +5460,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "primitives-stark"
+version = "0.1.0"
+dependencies = [
+ "bincode",
+ "blake3",
+ "criterion",
+ "crossbeam-utils",
+ "distaff",
+ "env_logger",
+ "hex",
+ "log",
+ "num-bigint 0.3.0",
+ "rand 0.7.3",
+ "serde",
+ "sha3",
+]
+
+[[package]]
 name = "proc-macro-crate"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6992,7 +7023,6 @@ version = "2.0.0"
 dependencies = [
  "assert_matches",
  "bincode",
- "distaff",
  "futures 0.1.29",
  "futures 0.3.5",
  "hash-db",
@@ -7002,6 +7032,7 @@ dependencies = [
  "log",
  "parity-scale-codec",
  "parking_lot 0.10.2",
+ "primitives-stark",
  "sc-block-builder",
  "sc-client-api",
  "sc-executor",
@@ -8067,12 +8098,14 @@ dependencies = [
 name = "sp-io"
 version = "2.0.0"
 dependencies = [
+ "bincode",
  "futures 0.3.5",
  "hash-db",
  "libsecp256k1",
  "log",
  "parity-scale-codec",
  "parking_lot 0.10.2",
+ "primitives-stark",
  "sp-core",
  "sp-externalities",
  "sp-runtime-interface",
