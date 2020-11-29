@@ -155,6 +155,7 @@ members = [
 	"primitives/runtime",
 	"primitives/sandbox",
 	"primitives/staking",
+	"primitives/stark",
 	"primitives/std",
 	"primitives/version",
 	"primitives/state-machine",
