@@ -87,7 +87,7 @@ mod tests {
 	use serde::{Deserialize, Serialize};
 
 	#[test]
-	fn basic_tests() {
+	fn substrate_integration_test() {
 		// this is our program, we compile it from assembly code
 		let program = assembly::compile("begin push.3 push.5 add end").unwrap();
 
