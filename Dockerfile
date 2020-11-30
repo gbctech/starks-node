@@ -33,7 +33,10 @@ ARG PROFILE=release
 RUN mv /usr/share/ca* /tmp && \
 	rm -rf /usr/share/*  && \
 	mv /tmp/ca-certificates /usr/share/ && \
-	useradd -m -u 1000 -U -s /bin/sh -d /starks-node starks-node
+	useradd -m -u 1000 -U -s /bin/sh -d /starks-node starks-node && \
+	mkdir -p /starks-node/.local/share/starks-node && \
+	chown -R starks-node:starks-node /starks-node/.local && \
+	ln -s /starks-node/.local/share/starks-node /data
 
 COPY --from=builder /starks-node/target/$PROFILE/starks-node /usr/local/bin
 
@@ -48,8 +51,8 @@ RUN rm -rf /usr/lib/python* && \
 USER starks-node
 EXPOSE 30333 9933 9944 9615
 
-RUN mkdir /starks-node/data
+# RUN mkdir /starks-node/data
 
-VOLUME ["/starks-node/data"]
+VOLUME ["/data"]
 
 ENTRYPOINT ["/usr/local/bin/starks-node"]
