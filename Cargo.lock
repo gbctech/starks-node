@@ -1565,20 +1565,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "frame-distaff-vm"
-version = "0.1.0"
-dependencies = [
- "frame-support",
- "frame-system",
- "hex",
- "parity-scale-codec",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "frame-executive"
 version = "2.0.0"
 dependencies = [
@@ -3897,6 +3883,7 @@ dependencies = [
  "pallet-contracts-primitives",
  "pallet-contracts-rpc-runtime-api",
  "pallet-democracy",
+ "pallet-distaff-vm",
  "pallet-elections-phragmen",
  "pallet-finality-tracker",
  "pallet-grandpa",
@@ -4394,6 +4381,20 @@ dependencies = [
  "sp-std",
  "sp-storage",
  "substrate-test-utils",
+]
+
+[[package]]
+name = "pallet-distaff-vm"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "hex",
+ "parity-scale-codec",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]

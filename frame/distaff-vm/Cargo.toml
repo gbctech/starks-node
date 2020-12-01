@@ -1,5 +1,5 @@
 [package]
-name = "frame-distaff-vm"
+name = "pallet-distaff-vm"
 version = "0.1.0"
 authors = ["dejavukong <foxcong.yolo@gmail.com>"]
 edition = "2018"
