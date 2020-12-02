@@ -897,6 +897,11 @@ impl pallet_vesting::Trait for Runtime {
 	type WeightInfo = weights::pallet_vesting::WeightInfo<Runtime>;
 }
 
+/// Include the Distaff VM pallet in the node runtime
+impl pallet_distaff_vm::Trait for Runtime {
+	type Event = Event;
+}
+
 construct_runtime!(
 	pub enum Runtime where
 		Block = Block,
@@ -935,6 +940,7 @@ construct_runtime!(
 		Scheduler: pallet_scheduler::{Module, Call, Storage, Event<T>},
 		Proxy: pallet_proxy::{Module, Call, Storage, Event<T>},
 		Multisig: pallet_multisig::{Module, Call, Storage, Event<T>},
+		DistaffVM: pallet_distaff_vm::{Module, Call, Storage, Event<T>},
 	}
 );
 
