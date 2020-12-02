@@ -897,6 +897,7 @@ impl pallet_vesting::Trait for Runtime {
 	type WeightInfo = weights::pallet_vesting::WeightInfo<Runtime>;
 }
 
+/// Include the Distaff VM pallet in the node runtime
 impl pallet_distaff_vm::Trait for Runtime {
 	type Event = Event;
 }

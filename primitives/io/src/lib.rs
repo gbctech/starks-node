@@ -768,8 +768,12 @@ sp_externalities::decl_extension! {
 	pub struct VerificationExt(BatchVerifier);
 }
 
+/// Interface that provides functions for STARK proof verification
 #[runtime_interface]
 pub trait Stark {
+	/// Provide the public input, outputs, program hash and proof data
+	/// for STARK proof verification
+	/// A pass/fail result will be returned. 
 	fn st_verify(
 		program_hash: &[u8; 32],
 		public_inputs: &[u128],

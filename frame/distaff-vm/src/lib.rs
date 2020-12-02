@@ -1,6 +1,5 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
-
 use frame_support::{decl_module, decl_storage, decl_event, decl_error, dispatch, traits::Get};
 use frame_system::ensure_signed;
 use sp_std::prelude::*;
@@ -12,55 +11,45 @@ mod mock;
 #[cfg(test)]
 mod tests;
 
-/// Configure the pallet by specifying the parameters and types on which it depends.
+/// Config pallet parameters and types
 pub trait Trait: frame_system::Trait {
-    /// Because this pallet emits events, it depends on the runtime's definition of an event.
     type Event: From<Event<Self>> + Into<<Self as frame_system::Trait>::Event>;
 }
 
-// The pallet's runtime storage items.
-// https://substrate.dev/docs/en/knowledgebase/runtime/storage
+// Currently the pallet is only used for proof verification. A place holder storage is used.
 decl_storage! {
-	// A unique name is used to ensure that the pallet's storage items are isolated.
-	// This name may be updated, but each pallet in the runtime must use a unique name.
-	// ---------------------------------vvvvvvvvvvvvvv
 	trait Store for Module<T: Trait> as DistaffVM {
-		// Learn more about declaring storage items:
-		// https://substrate.dev/docs/en/knowledgebase/runtime/storage#declaring-storage-items
 		Something get(fn something): Option<u32>;
 	}
 }
 
-// Pallets use events to inform users when important changes are made.
-// https://substrate.dev/docs/en/knowledgebase/runtime/events
+// Event for a successful STARK proof verification
 decl_event!(
 	pub enum Event<T> where <T as frame_system::Trait>::AccountId {
 		Verified(AccountId),
 	}
 );
 
-// Errors inform users that something went wrong.
+// Error message in case of a failed STARK proof verification
 decl_error! {
 	pub enum Error for Module<T: Trait> {
-		/// zk-stark verification failed
+		// STARK proof verification failed
 		StarkVerifyFailed,
 	}
 }
 
-// Dispatchable functions allows users to interact with the pallet and invoke state changes.
-// These functions materialize as "extrinsics", which are often compared to transactions.
-// Dispatchable functions must be annotated with a weight and must return a DispatchResult.
+// The Distaff VM module
 decl_module! {
 	pub struct Module<T: Trait> for enum Call where origin: T::Origin {
-		// Errors must be initialized if they are used by the pallet.
 		type Error = Error<T>;
 
-		// Events must be initialized if they are used by the pallet.
 		fn deposit_event() = default;
 
 		#[weight = 10_000 + T::DbWeight::get().reads_writes(1,1)]
+		/// The STARK proof verification function
 		pub fn verify(
 			origin,
+			// 4 input data fields are needed for a successful proof verification
 			program_hash: [u8; 32],
 			public_inputs: Box<Vec<u128>>,
 			outputs: Box<Vec<u128>>,
@@ -72,6 +61,7 @@ decl_module! {
 	}
 }
 
+// STARK proof verification via the STARK primitive module
 impl<T: Trait> Module<T> {
     fn stark_verify(
         program_hash: &[u8; 32],
