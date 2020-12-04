@@ -12,10 +12,10 @@ sp-std = { version = "2.0.0", default-features = false, path = "../../primitives
 sp-io = { version = "2.0.0", default-features = false, path = "../../primitives/io" }
 frame-support = { version = "2.0.0", default-features = false, path = "../support" }
 frame-system = { version = "2.0.0", default-features = false, path = "../system" }
+sp-runtime = { version = "2.0.0", default-features = false, path = "../../primitives/runtime" }
 
 [dev-dependencies]
 sp-core = { version = "2.0.0", default-features = false, path = "../../primitives/core" }
-sp-runtime = { version = "2.0.0", default-features = false, path = "../../primitives/runtime" }
 hex = "0.4.2"
 
 [features]
@@ -24,6 +24,7 @@ std = [
 	'codec/std',
     'sp-std/std',
     'sp-io/std',
+    'sp-runtime/std',
     'frame-support/std',
     'frame-system/std',
 ]

@@ -1,8 +1,9 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
-use frame_support::{decl_module, decl_storage, decl_event, decl_error, dispatch, traits::Get};
+use frame_support::{ensure, decl_module, decl_storage, decl_event, decl_error, dispatch, traits::Get};
 use frame_system::ensure_signed;
 use sp_std::prelude::*;
+use sp_runtime::DispatchResult;
 use sp_io::stark;
 
 #[cfg(test)]
@@ -55,7 +56,7 @@ decl_module! {
 			outputs: Box<Vec<u128>>,
 			proof: Vec<u8>) {
 			let who = ensure_signed(origin)?;
-			Self::stark_verify(&program_hash, &public_inputs, &outputs, &proof);
+			Self::stark_verify(&program_hash, &public_inputs, &outputs, &proof)?;
 			Self::deposit_event(RawEvent::Verified(who));
 		}
 	}
@@ -68,7 +69,9 @@ impl<T: Trait> Module<T> {
         public_inputs: &[u128],
         outputs: &[u128],
         proof: &[u8]
-    ) {
-        stark::st_verify(program_hash, public_inputs, outputs, proof);
+    ) -> DispatchResult {
+        let r = stark::st_verify(program_hash, public_inputs, outputs, proof);
+        ensure!(r.is_some(), Error::<T>::StarkVerifyFailed);
+        Ok(())
     }
 }
