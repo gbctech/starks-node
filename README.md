@@ -13,7 +13,7 @@ The Starks Node is built upon the the [Substrate](https://github.com/paritytech/
 Pull the Starks Node and UI docker images.
 
 ```
-$ docker pull starksnetwork/starks-node:0.0.5
+$ docker pull starksnetwork/starks-node:0.0.6
 $ docker pull starksnetwork/starks-ui:ms-1
 ```
 
@@ -21,7 +21,7 @@ Start the node container to setup a local test network. Start the ui container t
 
 ```
 $ docker run -d --name starks-ui -p 3000:80 starksnetwork/starks-ui:ms-1
-$ docker run --name starks-node -p 9944:9944 starksnetwork/starks-node:0.0.5 --dev --rpc-external --ws-external
+$ docker run --name starks-node -p 9944:9944 starksnetwork/starks-node:0.0.6 --dev --rpc-external --ws-external
 ```
 
 Open browser, enter url: `127.0.0.1:3000` to access the web app. On the top-left corner, switch to DEVELOPMENT -> Local Node (127.0.0.1:9944) in order to connect to the test network. 
