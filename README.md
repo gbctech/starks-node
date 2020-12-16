@@ -66,14 +66,14 @@ $ target/release/starks-node --dev
 
 ## Tests
 
-Test of the Distaff VM as a Substrate primitive package can be carried out like so:
+Test of the Distaff VM as a Substrate primitive module can be carried out like so:
 
 ```
 // in project directory
 $ cargo test -p primitives-stark
 ```
 
-Test of the Distaff VM frame can be carried out like so:
+Test of the Distaff VM frame pallet can be carried out like so:
 
 ```
 // in project directory
